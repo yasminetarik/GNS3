@@ -47,7 +47,7 @@ def generate_config(json_data):
                     
                 
 
-            
+        # Configure eBGP if present
             if 'eBGP' in config:
                 asn_d = json_data[AS]['autonomousSystem']
                 print(f"router bgp {asn_d}")
