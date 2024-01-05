@@ -34,7 +34,14 @@ def generate_config(json_data):
                     
                     
             if 'OSPF' in config:
+                ospf_config= config['OSPF']
                 print("router ospf 1")
+                for network in ospf_config['networks']:
+                    nw= network['network']
+                    mask= network['wildcardMask']
+                    area_id= network['area']
+                    
+                    print(f"network {network} {mask} area {area_id}")
                 ##à faire après la 2eme partie du intent file
 
         # Configure iBGP if present
@@ -47,7 +54,7 @@ def generate_config(json_data):
                     
                 
 
-        # Configure eBGP if present
+         #Configure eBGP if present
             if 'eBGP' in config:
                 asn_d = json_data[AS]['autonomousSystem']
                 print(f"router bgp {asn_d}")
