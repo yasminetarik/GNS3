@@ -41,7 +41,7 @@ def generate_config(json_data):
                     mask= network['wildcardMask']
                     area_id= network['area']
                     
-                    print(f"network {network} {mask} area {area_id}")
+                    print(f"network {nw} {mask} area {area_id}")
                 ##à faire après la 2eme partie du intent file
 
         # Configure iBGP if present
