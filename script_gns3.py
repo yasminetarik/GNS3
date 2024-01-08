@@ -59,8 +59,8 @@ def generate_config(json_data, output_dir):
                 file.write("!\n")
 
 # Example usage
-json_file = 'path_to_your_json_file.json'
-output_directory = 'path_to_output_directory'
+json_file = 
+output_directory = 
 
 with open(json_file, 'r') as file:
     data = json.load(file)
