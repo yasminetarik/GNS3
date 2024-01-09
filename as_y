@@ -1,0 +1,296 @@
+{
+  "AS_X": {
+    "autonomousSystem": 10,
+    "routingProtocols": {
+      "OSPF": {
+        "processID": 1,
+        "areas": ["0.0.0.0", "1.1.1.1"],
+        "networks": ["192.168.13.0/24", "192.168.14.0/24", "192.168.15.0/24", "192.168.16.0/24","192.168.17.0/24", "192.168.18.0/24", "192.168.19.0/24", "192.168.20.0/24", "192.168.21.0/24", "192.168.22.0/24", "192.168.23.0/24", "192.168.24.0/24"]
+      },
+      "iBGP": {
+        "peers": ["10.0.0.1", "10.0.0.2", "10.0.0.3", "10.0.0.4", "10.0.0.5", "10.0.0.6", "10.0.0.7" ]
+      }
+    },
+    "routers": {
+      "RouterA": {
+        "interfaces": [
+          {
+            "interfaceName": "GigabitEthernet0/0",
+            "ipAddress": "192.168.13.1",
+            "subnetMask": "255.255.255.0",
+            "area": "0.0.0.0",
+            "description": "Interface towards Router B"
+          },
+          {
+            "interfaceName": "GigabitEthernet0/1",
+            "ipAddress": "192.168.14.1",
+            "subnetMask": "255.255.255.0",
+            "area": "0.0.0.0",
+            "description": "Interface towards Router C"
+          },
+          {
+            "interfaceName": "Loopback0",
+            "ipAddress": "10.0.0.1",
+            "subnetMask": "255.255.255.255",
+            "description": "iBGP Loopback Interface"
+          }
+        ],
+        "OSPF": {
+          "networks": ["192.168.13.0", "192.168.14.0"]
+        },
+        "iBGP": {
+          "peers": ["10.0.0.2","10.0.0.3"],
+          "description": "iBGP peer with Router B and C"
+        }
+      },
+      "RouterB": {
+        
+  	"interfaces": [
+    	{
+      	"interfaceName": "GigabitEthernet0/0",
+      	"ipAddress": "192.168.13.2",
+      	"subnetMask": "255.255.255.0",
+      	"description": "Interface towards Router A"
+    	},
+	{
+	"interfaceName": "GigabitEthernet1/0",
+	"ipAddress": "192.168.15.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router C"
+	},
+	{
+	"interfaceName": "GigabitEthernet0/1",
+	"ipAddress": "192.168.16.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router D"
+	},
+    	{
+      	"interfaceName": "Loopback0",
+      	"ipAddress": "10.0.0.2",
+      	"subnetMask": "255.255.255.255",
+      	"description": "iBGP Loopback Interface"
+    	}
+  	],
+  	"RIP": {
+    	"networks": ["192.168.13.0", "192.168.15.0", "192.168.16.0"]
+  	},
+  	"iBGP": {
+    	"peers": ["10.0.0.1","10.0.0.3", "10.0.0.4"],
+    	"description": "iBGP peer with Router A and C and D"
+  	}
+
+      },
+       "RouterC": {
+        
+  	"interfaces": [
+    	{
+      	"interfaceName": "GigabitEthernet0/1",
+      	"ipAddress": "192.168.14.2",
+      	"subnetMask": "255.255.255.0",
+      	"description": "Interface towards Router A"
+    	},
+	{
+	"interfaceName": "GigabitEthernet1/0",
+	"ipAddress": "192.168.14.2",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router B"
+	},
+	{
+	"interfaceName": "GigabitEthernet0/0",
+	"ipAddress": "192.168.16.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router E"
+	},
+    	{
+      	"interfaceName": "Loopback0",
+      	"ipAddress": "10.0.0.3",
+      	"subnetMask": "255.255.255.255",
+      	"description": "iBGP Loopback Interface"
+    	}
+  	],
+  	"RIP": {
+    	"networks": ["192.168.14.0", "192.168.15.0", "192.168.17.0"]
+  	},
+  	"iBGP": {
+    	"peers": ["10.0.0.1","10.0.0.2", "10.0.0.5"],
+    	"description": "iBGP peer with Router A and B and E"
+  	}
+
+      },
+      "RouterD": {
+        
+  	"interfaces": [
+    	{
+      	"interfaceName": "GigabitEthernet0/1",
+      	"ipAddress": "192.168.15.2",
+      	"subnetMask": "255.255.255.0",
+      	"description": "Interface towards Router B"
+    	},
+	{
+	"interfaceName": "GigabitEthernet1/0",
+	"ipAddress": "192.168.17.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router E"
+	},
+	{
+	"interfaceName": "GigabitEthernet0/0",
+	"ipAddress": "192.168.20.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router G"
+	},
+	{
+	"interfaceName": "GigabitEthernet1/1",
+	"ipAddress": "192.168.18.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router F"
+	},
+    	{
+      	"interfaceName": "Loopback0",
+      	"ipAddress": "10.0.0.4",
+      	"subnetMask": "255.255.255.255",
+      	"description": "iBGP Loopback Interface"
+    	}
+  	],
+  	"RIP": {
+    	"networks": ["192.168.15.0", "192.168.17.0", "192.168.18.0", "192.168.20.0"]
+  	},
+  	"iBGP": {
+    	"peers": ["10.0.0.2","10.0.0.5", "10.0.0.6", "10.0.0.7"],
+    	"description": "iBGP peer with Router B and E and F and G"
+  	}
+
+      },
+      "RouterE": {
+        
+  	"interfaces": [
+    	{
+      	"interfaceName": "GigabitEthernet1/1",
+      	"ipAddress": "192.168.19.1",
+      	"subnetMask": "255.255.255.0",
+      	"description": "Interface towards Router G"
+    	},
+	{
+	"interfaceName": "GigabitEthernet1/0",
+	"ipAddress": "192.168.17.2",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router D"
+	},
+	{
+	"interfaceName": "GigabitEthernet0/0",
+	"ipAddress": "192.168.16.2",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router C"
+	},
+	{
+	"interfaceName": "GigabitEthernet0/1",
+	"ipAddress": "192.168.20.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router F"
+	},
+    	{
+      	"interfaceName": "Loopback0",
+      	"ipAddress": "10.0.0.5",
+      	"subnetMask": "255.255.255.255",
+      	"description": "iBGP Loopback Interface"
+    	}
+  	],
+  	"RIP": {
+    	"networks": ["192.168.16.0", "192.168.17.0", "192.168.19.0", "192.168.20.0"]
+  	},
+  	"iBGP": {
+    	"peers": ["10.0.0.3","10.0.0.4", "10.0.0.6", "10.0.0.7"],
+    	"description": "iBGP peer with Router B and E and F and G"
+  	}
+
+      },
+       "RouterF": {
+        
+  	"interfaces": [
+    	{
+      	"interfaceName": "GigabitEthernet1/1",
+      	"ipAddress": "192.168.18.2",
+      	"subnetMask": "255.255.255.0",
+      	"description": "Interface towards Router D"
+    	},
+
+	{
+	"interfaceName": "GigabitEthernet0/1",
+	"ipAddress": "192.168.20.2",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router E"
+	},
+	{
+	"interfaceName": "GigabitEthernet0/0",
+	"ipAddress": "192.168.21.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards AS Y"
+	},
+
+    	{
+      	"interfaceName": "Loopback0",
+      	"ipAddress": "10.0.0.6",
+      	"subnetMask": "255.255.255.255",
+      	"description": "iBGP Loopback Interface"
+    	}
+  	],
+  	"RIP": {
+    	"networks": [ "192.168.18.0", "192.168.20.0", "192.168.21.0"]
+  	},
+  	"iBGP": {
+    	"peers": ["10.0.0.4", "10.0.0.5"],
+    	"description": "iBGP peer with Router B and E and F and G"
+  	},
+        "eBGP": {
+          "neighbor": {
+            "ipAddress": "Router_AS_Y_IP",
+            "remoteAsn": 200
+          }
+
+      },
+       "RouterG": {
+        
+  	"interfaces": [
+    	{
+      	"interfaceName": "GigabitEthernet1/1",
+      	"ipAddress": "192.168.19.2",
+      	"subnetMask": "255.255.255.0",
+      	"description": "Interface towards Router E"
+    	},
+
+	{
+	"interfaceName": "GigabitEthernet0/1",
+	"ipAddress": "192.168.22.1",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards AS Y"
+	},
+	{
+	"interfaceName": "GigabitEthernet0/0",
+	"ipAddress": "192.168.20.2",
+	"subnetMask": "255.255.255.0",
+	"description": "Interface towards Router D"
+	},
+
+    	{
+      	"interfaceName": "Loopback0",
+      	"ipAddress": "10.0.0.7",
+      	"subnetMask": "255.255.255.255",
+      	"description": "iBGP Loopback Interface"
+    	}
+  	],
+  	"RIP": {
+    	"networks": [ "192.168.19.0", "192.168.20.0", "192.168.22.0"]
+  	},
+  	"iBGP": {
+    	"peers": ["10.0.0.4", "10.0.0.5"],
+    	"description": "iBGP peer with Router B and E and F and G"
+  	},
+        "eBGP": {
+          "neighbor": {
+            "ipAddress": "Router_AS_Y_IP",
+            "remoteAsn": 200
+          }
+	}
+
+    }
+  }
+}
