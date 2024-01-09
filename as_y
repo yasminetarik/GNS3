@@ -1,5 +1,5 @@
 {
-  "AS_X": {
+  "AS_Y": {
     "autonomousSystem": 10,
     "routingProtocols": {
       "OSPF": {
