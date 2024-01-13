@@ -32,7 +32,7 @@ def generate_config(json_data, output_dir):
 
                 if 'OSPF' in config:
                     ospf_config = config['OSPF']
-                    file.write("router ospf 1\n")
+                    file.write("ipv6 router ospf 1\n")
                     for network in ospf_config['networks']:
                         nw = network['network']
                         mask = network['wildcardMask']
