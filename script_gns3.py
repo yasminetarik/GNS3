@@ -28,7 +28,7 @@ def generate_config(json_data, output_dir):
                     for interface in config['interfaces']:
                         file.write(f" interface {interface['interfaceName']}\n")
                         file.write (f"ipv6 rip enable")
-                    file.write("\nno auto-summary\n\n")
+                    
 
                 if 'OSPF' in config:
                     ospf_config = config['OSPF']
