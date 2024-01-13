@@ -19,14 +19,15 @@ def generate_config(json_data, output_dir):
 
                 for interface in config['interfaces']:
                     file.write(f"interface {interface['interfaceName']}\n")
-                    file.write(f" ip address {interface['ipAddress']} {interface['subnetMask']}\n")
+                    file.write(f" ip address {interface['ipAddress']}\n")
                     file.write(" no shutdown\n\n")
 
                 if 'RIP' in config:
-                    file.write("router rip\n")
-                    file.write(" version 2\n")
-                    for network in config['RIP']['networks']:
-                        file.write(f" network {network}\n")
+                    file.write("ipv6 router rip\n")
+                    file.write("exit")
+                    for interface in config['interfaces']:
+                        file.write(f" interface {interface['interfaceName']}\n")
+                        file.write (f"ipv6 rip enable")
                     file.write("\nno auto-summary\n\n")
 
                 if 'OSPF' in config:
