@@ -307,10 +307,12 @@
             },
             
           ],
-          "OSPF": {
+          "OSPF": {*
+	    "routeurId":"1.1.1.1",
             "area":"0.0.0.0"
           },   
           "iBGP": {
+		"routeurId":"1.2.1.1",
           	"peers": ["2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
            	"description": "iBGP peer with Router J,K and I"
         	},
@@ -351,9 +353,11 @@
             
           ],
           "OSPF": {
+	    "routeurId":"2.2.2.2",
             "area":"0.0.0.0"
           },   
           "iBGP": {
+		 "routeurId":"2.1.2.2",
           	"peers": ["2001:db8:81::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
            	"description": "iBGP peer with Router H,J and K "
         	},
@@ -394,9 +398,11 @@
             
           ],
           "OSPF": {
+	    "routeurId":"3.3.3.3",
             "area":"0.0.0.0"
           },   
           "iBGP": {
+		"routeurId":"3.1.3.3",
           	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
            	"description": "iBGP peer with Router H,I ,L and K "
         	}
@@ -431,9 +437,11 @@
             
           ],
           "OSPF": {
+	    "routeurId":"4.4.4.4",
             "area":"0.0.0.0"
           },   
           "iBGP": {
+	        "routeurId":"4.1.4.4",
           	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
            	"description": "iBGP peer with Router H,I ,J and M"
         	}
@@ -464,9 +472,11 @@
             
           ],
           "OSPF": {
+	    "routeurId":"5.5.5.5",
             "area":"0.0.0.0"
           },   
           "iBGP": {
+	        "routeurId":"5.1.5.5",
           	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:86::1", "2001:db8:87::1" ],
            	"description": "iBGP peer with Router J,M, and N "
         	}
@@ -497,9 +507,11 @@
             
           ],
           "OSPF": {
+	    "routeurId":"6.6.6.6",
             "area":"0.0.0.0"
           },   
           "iBGP": {
+		"routeurId":"6.1.6.6",
           	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:87::1" ],
            	"description": "iBGP peer with Router K,L and N "
         	}},
@@ -524,9 +536,11 @@
             
           ],
           "OSPF": {
+	    "routeurId":"7.7.7.7",
             "area":"0.0.0.0"
           },   
           "iBGP": {
+		"routeurId":"7.1.7.7",
           	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1" ],
            	"description": "iBGP peer with Router L and M "
         	}
