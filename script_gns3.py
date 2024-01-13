@@ -33,11 +33,12 @@ def generate_config(json_data, output_dir):
                 if 'OSPF' in config:
                     ospf_config = config['OSPF']
                     file.write("ipv6 router ospf 1\n")
-                    for network in ospf_config['networks']:
-                        nw = network['network']
-                        mask = network['wildcardMask']
-                        area_id = network['area']
-                        file.write(f" network {nw} {mask} area {area_id}\n")
+                    file.write(f"router-id {OSPF['routeurId']}\n")
+                    file.write("exit")
+                    for interface in config['interfaces']:
+                        area_id = OSPF['area']
+                        file.write(f" ipv6 ospf 1 area {area_id}\n")
+                        file.write("exit")
                     file.write("\n")
 
                 if 'iBGP' in config:
