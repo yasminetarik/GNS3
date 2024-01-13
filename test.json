@@ -265,16 +265,272 @@
      }
     }
   },
-
-
-
-
-
-
-
-
-
-
-
-
+	
+  "AS_Y": {
+    "autonomousSystem": 11,
+    "routingProtocols": {
+      "OSPF": {
+        "processId":1,
+        "networks": ["2001:db8:13::0/64", "2001:db8:14::0/64", "2001:db8:15::0/64", "2001:db8:16::0/64","2001:db8:17::0/64", "2001:db8:18::0/64", "2001:db8:19::0/64", "2001:db8:20::0/64", "2001:db8:21::0/64", "2001:db8:22::0/64", "2001:db8:23::0/64"]
+      },
+      "iBGP": {
+        "peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ]
+      }
+    },
+    "routers": {
+      "RouterH": {
+          "interfaces": [
+            {
+              "interfaceName": "GigabitEthernet0/1",
+              "ipv6Address":"2001:db8:16::1/64",
+              "Description":"Interface towards routeur J"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "ipv6Address":"2001:db8:14::1/64",
+              "Description":"Interface towards routeur K"
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "ipv6Address":"2001:db8:13::1/64",
+              "Description":"Interface towards routeur I"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/1",
+              "ipv6Address":"2001:db8:12::2/64",
+              "Description":"Interface towards AS X"
+            },
+            {
+              "interfaceName": "Loopback0",
+             "ipv6Address":"2001:db8:81::1/128",
+              "Description":"IBGP Loopback Description"
+            },
+            
+          ],
+          "OSPF": {
+            "area":"0.0.0.0"
+          },   
+          "iBGP": {
+          	"peers": ["2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
+           	"description": "iBGP peer with Router J,K and I"
+        	},
+          "eBGP": {
+            "neighbor": {
+            "ipAddress": "Router_AS_X_IP",
+            "remoteAsn": 200
+          }
+      }
+    },
+      "RouterI": {
+          "interfaces": [
+            {
+              "interfaceName": "GigabitEthernet0/1",
+              "ipv6Address":"2001:db8:13::2/64",
+              "Description":"Interface towards routeur H"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "ipv6Address":"2001:db8:15::1/64",
+              "Description":"Interface towards routeur J"
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "ipv6Address":"2001:db8:17::1/64",
+              "Description":"Interface towards routeur K"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/1",
+              "ipv6Address":"2001:db8:11::2/64",
+              "Description":"Interface towards AS X"
+            },
+            {
+              "interfaceName": "Loopback0",
+             "ipv6Address":"2001:db8:82::1/128",
+              "Description":"IBGP Loopback Description"
+            },
+            
+          ],
+          "OSPF": {
+            "area":"0.0.0.0"
+          },   
+          "iBGP": {
+          	"peers": ["2001:db8:81::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
+           	"description": "iBGP peer with Router H,J and K "
+        	},
+          "eBGP": {
+            "neighbor": {
+            "ipAddress": "Router_AS_X_IP",
+            "remoteAsn": 200
+          }
+      }
+    },
+      "RouterJ": {
+          "interfaces": [
+            {
+              "interfaceName": "GigabitEthernet0/1",
+              "ipv6Address":"2001:db8:16::2/64",
+              "Description":"Interface towards routeur H"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "ipv6Address":"2001:db8:15::2/64",
+              "Description":"Interface towards routeur I"
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "ipv6Address":"2001:db8:18::1/64",
+              "Description":"Interface towards routeur K"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/1",
+              "ipv6Address":"2001:db8:19::1/64",
+              "Description":"Interface towards routeur L"
+            },
+            {
+              "interfaceName": "Loopback0",
+             "ipv6Address":"2001:db8:83::1/128",
+              "Description":"IBGP Loopback Description"
+            },
+            
+          ],
+          "OSPF": {
+            "area":"0.0.0.0"
+          },   
+          "iBGP": {
+          	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
+           	"description": "iBGP peer with Router H,I ,L and K "
+        	}
+      },
+        "RouterK": {
+          "interfaces": [
+            {
+              "interfaceName": "GigabitEthernet0/1",
+              "ipv6Address":"2001:db8:17::2/64",
+              "Description":"Interface towards routeur I"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "ipv6Address":"2001:db8:14::2/64",
+              "Description":"Interface towards routeur H"
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "ipv6Address":"2001:db8:18::2/64",
+              "Description":"Interface towards routeur J"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/1",
+              "ipv6Address":"2001:db8:20::1/64",
+              "Description":"Interface towards routeur M"
+            },
+            {
+              "interfaceName": "Loopback0",
+             "ipv6Address":"2001:db8:84::1/128",
+              "Description":"IBGP Loopback Description"
+            },
+            
+          ],
+          "OSPF": {
+            "area":"0.0.0.0"
+          },   
+          "iBGP": {
+          	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:85::1", "2001:db8:86::1", "2001:db8:87::1" ],
+           	"description": "iBGP peer with Router H,I ,J and M"
+        	}
+        },
+          "RouterL": {
+          "interfaces": [
+            {
+              "interfaceName": "GigabitEthernet0/1",
+              "ipv6Address":"2001:db8:19::2/64",
+              "Description":"Interface towards routeur J"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "ipv6Address":"2001:db8:21::1/64",
+              "Description":"Interface towards routeur M"
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "ipv6Address":"2001:db8:22::1/64",
+              "Description":"Interface towards routeur N"
+            },
+           
+            {
+              "interfaceName": "Loopback0",
+             "ipv6Address":"2001:db8:85::1/128",
+              "Description":"IBGP Loopback Description"
+            },
+            
+          ],
+          "OSPF": {
+            "area":"0.0.0.0"
+          },   
+          "iBGP": {
+          	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:86::1", "2001:db8:87::1" ],
+           	"description": "iBGP peer with Router J,M, and N "
+        	}
+          },
+            "RouterM": {
+          "interfaces": [
+            {
+              "interfaceName": "GigabitEthernet0/1",
+              "ipv6Address":"2001:db8:20::2/64",
+              "Description":"Interface towards routeur K"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "ipv6Address":"2001:db8:21::2/64",
+              "Description":"Interface towards routeur L"
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "ipv6Address":"2001:db8:23::1/64",
+              "Description":"Interface towards routeur N"
+            },
+          
+            {
+              "interfaceName": "Loopback0",
+             "ipv6Address":"2001:db8:86::1/128",
+              "Description":"IBGP Loopback Description"
+            },
+            
+          ],
+          "OSPF": {
+            "area":"0.0.0.0"
+          },   
+          "iBGP": {
+          	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:87::1" ],
+           	"description": "iBGP peer with Router K,L and N "
+        	}},
+              "RouterN": {
+          "interfaces": [
+            {
+              "interfaceName": "GigabitEthernet0/1",
+              "ipv6Address":"2001:db8:22::2/64",
+              "Description":"Interface towards routeur L"
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "ipv6Address":"2001:db8:23::2/64",
+              "Description":"Interface towards routeur M"
+            },
+            
+            {
+              "interfaceName": "Loopback0",
+             "ipv6Address":"2001:db8:87::1/128",
+              "Description":"IBGP Loopback Description"
+            },
+            
+          ],
+          "OSPF": {
+            "area":"0.0.0.0"
+          },   
+          "iBGP": {
+          	"peers": ["2001:db8:81::1", "2001:db8:82::1", "2001:db8:83::1", "2001:db8:84::1", "2001:db8:85::1", "2001:db8:86::1" ],
+           	"description": "iBGP peer with Router L and M "
+        	}
+      }
+    }
+  }
 }
