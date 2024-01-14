@@ -37,43 +37,36 @@ def generate_config(json_data, output_dir):
                     file.write(f"router-id {ospf_config['routeurId']}\n")
                     file.write("exit")
                     for interface in config['interfaces']:
+                        file.write(f"interface {interface['interfaceName']}\n")
                         area_id = ospf_config['area']
                         file.write(f" ipv6 ospf 1 area {area_id}\n")
-                        file.write("exit")
-                    file.write("\n")
-
-
-                if 'iBGP' and 'RIP' in config:
-                    file.write("ipv6 router rip  config['RIP']['process_name'] \n")
-                    file.write(f"redistribute bgp {json_data[AS]['autonomousSystem']} include-connected \n")
                     file.write("exit\n")
 
-                    file.write(f"router bgp {json_data[AS]['autonomousSystem']}\n")
-                    file.write("address-family ipv6\n")
-                    file.write(f"redistribute rip config['RIP']['process_name']\n")
-                    file.write("exit\n")                    
-
-                if 'iBGP' and 'OSPF' in config:
-                    file.write("ipv6 router ospf 1 \n")
-                    file.write(f"redistribute bgp {json_data[AS]['autonomousSystem']} include-connected \n")
-                    file.write("exit\n")
-
-                    file.write(f"router bgp {json_data[AS]['autonomousSystem']}\n")
-                    file.write("address-family ipv6\n")
-                    file.write(f"redistribute ospf 1 match internal external 1 external 2\n")
-                    file.write("exit-address-family\n")
-                    file.write("exit\n")   
-
-                
                 if 'iBGP' in config:
                     asn = json_data[AS]['autonomousSystem']
                     file.write(f"router bgp {asn}\n")
                     file.write(" bgp log-neighbor-changes\n")
+                    file.write(" address-family ipv6\n")
                     for peer in config['iBGP']['peers']:
                         file.write(f" neighbor {peer} remote-as {asn}\n")
-                        file.write("address-family ipv6 unicast\n")
-                        file.write("neighbor {peer} activate\n")
-                    file.write("\n")
+                        file.write(" neighbor {peer} activate\n")
+                    file.write("exit-address-family\n")
+                    file.write("exit\n")
+
+                    if 'RIP' in config:
+                        file.write(f"router bgp {asn}\n")
+                        file.write(" address-family ipv6\n")
+                        file.write(f" redistribute rip {config['RIP']['process_name']}\n")
+                        file.write("exit-address-family\n")
+                        file.write("exit\n")
+
+                    if 'OSPF' in config:
+                        file.write(f"router bgp {asn}\n")
+                        file.write(" address-family ipv6\n")
+                        file.write(" redistribute ospf 1 match internal external 1 external 2\n")
+                        file.write("exit-address-family\n")
+                        file.write("exit\n")
+
 
                 if 'eBGP' in config:
                     asn_d = json_data[AS]['autonomousSystem']
