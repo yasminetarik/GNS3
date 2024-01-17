@@ -86,7 +86,7 @@ def generate_config(json_data, output_dir):
                         relationship= neighbor.get("community", "peer")
 
                         if relationship == 'customer':
-                            local_pref = 150
+                            local_pref = 300
                         elif relationship == 'peer':
                             local_pref = 100
                         elif relationship == 'provider':
