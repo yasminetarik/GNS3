@@ -1,4 +1,4 @@
-  {
+  { // on aura deux routes map, une in une out
   "AS_X": {
     "autonomousSystem": 10,
     "routingProtocols": {
