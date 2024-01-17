@@ -46,11 +46,14 @@ def generate_config(json_data, output_dir):
                     asn = json_data[AS]['autonomousSystem']
                     file.write(f"router bgp {asn}\n")
                     file.write(" bgp log-neighbor-changes\n")
-                    file.write(" address-family ipv6\n")
+                    
                     for peer in config['iBGP']['peers']:
                         file.write(f" neighbor {peer} remote-as {asn}\n")
+                        
+                        file.write(" address-family ipv6 unicast\n")
                         file.write(" neighbor {peer} activate\n")
-                    file.write("exit-address-family\n")
+                        file.write(f"neighbor {peer} send-community both")
+                        file.write("exit-address-family\n")
                     file.write("exit\n")
 
                     if 'RIP' in config:
@@ -62,7 +65,7 @@ def generate_config(json_data, output_dir):
 
                     if 'OSPF' in config:
                         file.write(f"router bgp {asn}\n")
-                        file.write(" address-family ipv6\n")
+                        file.write(" address-family ipv6 unicast\n")
                         file.write(" redistribute ospf 1 match internal external 1 external 2\n")
                         file.write("exit-address-family\n")
                         file.write("exit\n")
@@ -70,14 +73,56 @@ def generate_config(json_data, output_dir):
 
                 if 'eBGP' in config:
                     asn_d = json_data[AS]['autonomousSystem']
-                    file.write(f"router bgp {asn_d}\n")
-                    for voisin in config["eBGP"]["neighbor"]:
-                        asn_a = voisin["remoteAsn"]
-                        neighbor = voisin["ipAddress"]
-                        file.write(f" neighbor {neighbor} remote-as {asn_a}\n")
-                    file.write("\n")
+                    conf_ebgp = config['eBGP']
 
-                file.write("!\n")
+                    file.write(f"router bgp {asn_d}\n")
+
+                    for neighbor in conf_ebgp["neighbors"]:
+                        route = neighbor["route_map"]
+                        asn_a = neighbor["remoteAsn"]
+                        neighbor_ip = neighbor["ipAddress"]
+                        set_community = route["set_community"] 
+                        relationship= neighbor.get("community", "peer")
+
+                        if relationship == 'customer':
+                            local_pref = 150
+                        elif relationship == 'peer':
+                            local_pref = 100
+                        elif relationship == 'provider':
+                            local_pref = 50
+                        else:
+                            local_pref = 100
+                        
+                        file.write(f" neighbor {neighbor_ip} remote-as {asn_a}\n")
+
+                        file.write(f"route-map {route['community']} {route['action']} {route['sequence']}\n")
+                        
+                        file.write(f" set community {set_community}\n")
+                        file.write(f"set local-preference {local_pref}\n")
+                        file.write("exit\n")
+
+                    file.write(" address-family ipv6 unicast\n")
+                    for neighbor in conf_ebgp["neighbors"]:
+                        route = neighbor["route_map"]
+                        file.write(f" neighbor {neighbor['ipAddress']} route-map {route['community']} in\n")
+                        
+                    file.write("exit-address-family\n")
+                    file.write("exit\n")
+                file.write("\n")
+
+
+                for neighbor in conf_ebgp["neighbors"]:
+                    route = neighbor["route_map"]
+                    relationship = route['community']
+                    if relationship == 'customer':
+                        local_pref = 150
+                    elif relationship == 'peer':
+                        local_pref = 100
+                    elif relationship == 'provider':
+                        local_pref = 50
+                    else:
+                        local_pref = 100 
+
 
 # Example usage
 json_file = 
