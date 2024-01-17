@@ -327,33 +327,32 @@
               "interfaceName": "Loopback0",
               "ipv6Address":"2001:db8:81::1/128",
               "Description":"IBGP Loopback Description"
-            },
-            
+            },         
           ],
           "OSPF": {
 	    "routeurId":"1.1.1.1",
-            "area":"0.0.0.0"
+            "area":"0.0.0.0",
 	    "interfaces" : [
-
- 	   {
+ 	    {
               "interfaceName": "GigabitEthernet0/1",
+	      "area":"0.0.0.0",
 	      "ospfCost" : 10
             },
             {
               "interfaceName": "GigabitEthernet1/0",
+	      "area":"0.0.0.0",
 	      "ospfCost" : 5
             },
             {
               "interfaceName": "GigabitEthernet0/0",
+	      "area":"0.0.0.0",
 	      "ospfCost" : 15
             },
             {
               "interfaceName": "GigabitEthernet1/1",
+              "area":"0.0.0.0",
 	      "ospfCost" : 7
-            }
-
-
-		    
+            }	    
 	    ]
           },   
           "iBGP": {
