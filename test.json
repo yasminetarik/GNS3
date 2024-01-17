@@ -378,21 +378,25 @@
               "interfaceName": "GigabitEthernet0/1",
               "ipv6Address":"2001:db8:13::2/64",
               "Description":"Interface towards routeur H"
+	      "ospfCost" : 10
             },
             {
               "interfaceName": "GigabitEthernet1/0",
               "ipv6Address":"2001:db8:15::1/64",
               "Description":"Interface towards routeur J"
+	      "ospfCost" : 5
             },
             {
               "interfaceName": "GigabitEthernet0/0",
               "ipv6Address":"2001:db8:17::1/64",
               "Description":"Interface towards routeur K"
+	      "ospfCost" : 15
             },
             {
               "interfaceName": "GigabitEthernet1/1",
               "ipv6Address":"2001:db8:11::2/64",
               "Description":"Interface towards AS X"
+	      "ospfCost" : 7
             },
             {
               "interfaceName": "Loopback0",
@@ -403,7 +407,30 @@
           ],
           "OSPF": {
 	    "routeurId":"2.2.2.2",
-            "area":"0.0.0.0"
+            "area":"0.0.0.0",
+	    "interfaces" : [
+	    {
+              "interfaceName": "GigabitEthernet0/1",
+      	      "area":"0.0.0.0",
+	      "ospfCost" : 10
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "area":"0.0.0.0",
+	      "ospfCost" : 5
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "area":"0.0.0.0",
+	      "ospfCost" : 15
+            },
+            {
+              "interfaceName": "GigabitEthernet1/1",
+              "area":"0.0.0.0",
+	      "ospfCost" : 7
+            }
+
+	    ]
           },   
           "iBGP": {
 		 "routeurId":"2.1.2.2",
@@ -428,33 +455,59 @@
             {
               "interfaceName": "GigabitEthernet0/1",
               "ipv6Address":"2001:db8:16::2/64",
-              "Description":"Interface towards routeur H"
+              "Description":"Interface towards routeur H",
+	      "ospfCost" : 10
             },
             {
               "interfaceName": "GigabitEthernet1/0",
               "ipv6Address":"2001:db8:15::2/64",
-              "Description":"Interface towards routeur I"
+              "Description":"Interface towards routeur I",
+	      "ospfCost" : 5
             },
             {
               "interfaceName": "GigabitEthernet0/0",
               "ipv6Address":"2001:db8:18::1/64",
-              "Description":"Interface towards routeur K"
+              "Description":"Interface towards routeur K",
+	      "ospfCost" : 15
             },
             {
               "interfaceName": "GigabitEthernet1/1",
               "ipv6Address":"2001:db8:19::1/64",
-              "Description":"Interface towards routeur L"
+              "Description":"Interface towards routeur L",
+	      "ospfCost" : 7
             },
             {
               "interfaceName": "Loopback0",
-             "ipv6Address":"2001:db8:83::1/128",
+              "ipv6Address":"2001:db8:83::1/128",
               "Description":"IBGP Loopback Description"
-            },
+            }
             
           ],
           "OSPF": {
 	    "routeurId":"3.3.3.3",
-            "area":"0.0.0.0"
+            "area":"0.0.0.0",
+	    "interfaces" : [
+	    {
+              "interfaceName": "GigabitEthernet0/1",
+              "area":"0.0.0.0",
+	      "ospfCost" : 10
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "area":"0.0.0.0",
+	      "ospfCost" : 5
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "area":"0.0.0.0",
+	      "ospfCost" : 15
+            },
+            {
+              "interfaceName": "GigabitEthernet1/1",
+              "area":"0.0.0.0",
+	      "ospfCost" : 7
+            }
+	    ]
           },   
           "iBGP": {
 		"routeurId":"3.1.3.3",
@@ -467,33 +520,59 @@
             {
               "interfaceName": "GigabitEthernet0/1",
               "ipv6Address":"2001:db8:17::2/64",
-              "Description":"Interface towards routeur I"
+              "Description":"Interface towards routeur I",
+	      "ospfCost" : 10
             },
             {
               "interfaceName": "GigabitEthernet1/0",
               "ipv6Address":"2001:db8:14::2/64",
-              "Description":"Interface towards routeur H"
+              "Description":"Interface towards routeur H",
+	      "ospfCost" : 5
             },
             {
               "interfaceName": "GigabitEthernet0/0",
               "ipv6Address":"2001:db8:18::2/64",
-              "Description":"Interface towards routeur J"
+              "Description":"Interface towards routeur J",
+	      "ospfCost" : 15
             },
             {
               "interfaceName": "GigabitEthernet1/1",
               "ipv6Address":"2001:db8:20::1/64",
-              "Description":"Interface towards routeur M"
+              "Description":"Interface towards routeur M",
+	      "ospfCost" : 7	
             },
             {
               "interfaceName": "Loopback0",
-             "ipv6Address":"2001:db8:84::1/128",
+              "ipv6Address":"2001:db8:84::1/128",
               "Description":"IBGP Loopback Description"
             },
             
           ],
           "OSPF": {
 	    "routeurId":"4.4.4.4",
-            "area":"0.0.0.0"
+            "area":"0.0.0.0",
+	    "interfaces" : [
+	     {
+              "interfaceName": "GigabitEthernet0/1",
+              "area":"0.0.0.0",
+	      "ospfCost" : 10
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "area":"0.0.0.0",
+	      "ospfCost" : 5
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "area":"0.0.0.0",
+	      "ospfCost" : 15
+            },
+            {
+              "interfaceName": "GigabitEthernet1/1",
+              "area":"0.0.0.0",
+	      "ospfCost" : 7	
+            }
+	    ]
           },   
           "iBGP": {
 	        "routeurId":"4.1.4.4",
@@ -505,18 +584,15 @@
           "interfaces": [
             {
               "interfaceName": "GigabitEthernet0/1",
-              "ipv6Address":"2001:db8:19::2/64",
-              "Description":"Interface towards routeur J"
+	      "ospfCost" : 10
             },
             {
               "interfaceName": "GigabitEthernet1/0",
-              "ipv6Address":"2001:db8:21::1/64",
-              "Description":"Interface towards routeur M"
+              "ospfCost" : 5
             },
             {
               "interfaceName": "GigabitEthernet0/0",
-              "ipv6Address":"2001:db8:22::1/64",
-              "Description":"Interface towards routeur N"
+              "ospfCost" : 15
             },
            
             {
@@ -528,7 +604,24 @@
           ],
           "OSPF": {
 	    "routeurId":"5.5.5.5",
-            "area":"0.0.0.0"
+            "area":"0.0.0.0",
+	    "interfaces" : [
+	    {
+              "interfaceName": "GigabitEthernet0/1",
+	      "area":"0.0.0.0",
+	      "ospfCost" : 10
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0"
+	      "area":"0.0.0.0",
+              "ospfCost" : 5
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+	      "area":"0.0.0.0",
+              "ospfCost" : 15
+            }
+	    ]
           },   
           "iBGP": {
 	        "routeurId":"5.1.5.5",
@@ -541,17 +634,20 @@
             {
               "interfaceName": "GigabitEthernet0/1",
               "ipv6Address":"2001:db8:20::2/64",
-              "Description":"Interface towards routeur K"
+              "Description":"Interface towards routeur K",
+              "ospfCost" : 10
             },
             {
               "interfaceName": "GigabitEthernet1/0",
               "ipv6Address":"2001:db8:21::2/64",
-              "Description":"Interface towards routeur L"
+              "Description":"Interface towards routeur L",
+              "ospfCost" : 5
             },
             {
               "interfaceName": "GigabitEthernet0/0",
               "ipv6Address":"2001:db8:23::1/64",
-              "Description":"Interface towards routeur N"
+              "Description":"Interface towards routeur N",
+              "ospfCost" : 15
             },
           
             {
@@ -563,7 +659,24 @@
           ],
           "OSPF": {
 	    "routeurId":"6.6.6.6",
-            "area":"0.0.0.0"
+            "area":"0.0.0.0",
+	    "interfaces" : [
+	    {
+              "interfaceName": "GigabitEthernet0/1",
+              "area":"0.0.0.0",
+              "ospfCost" : 10
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "area":"0.0.0.0",
+              "ospfCost" : 5
+            },
+            {
+              "interfaceName": "GigabitEthernet0/0",
+              "area":"0.0.0.0",
+              "ospfCost" : 15
+            }
+	    ]
           },   
           "iBGP": {
 		"routeurId":"6.1.6.6",
@@ -575,12 +688,14 @@
             {
               "interfaceName": "GigabitEthernet0/1",
               "ipv6Address":"2001:db8:22::2/64",
-              "Description":"Interface towards routeur L"
+              "Description":"Interface towards routeur L",
+	      "ospfCost" : 10
             },
             {
               "interfaceName": "GigabitEthernet1/0",
               "ipv6Address":"2001:db8:23::2/64",
-              "Description":"Interface towards routeur M"
+              "Description":"Interface towards routeur M",
+	      "ospfCost" : 5
             },
             
             {
@@ -592,7 +707,19 @@
           ],
           "OSPF": {
 	    "routeurId":"7.7.7.7",
-            "area":"0.0.0.0"
+            "area":"0.0.0.0",
+	    "interfaces" : [
+	    {
+              "interfaceName": "GigabitEthernet0/1",
+              "area":"0.0.0.0",
+	      "ospfCost" : 10
+            },
+            {
+              "interfaceName": "GigabitEthernet1/0",
+              "area":"0.0.0.0",
+	      "ospfCost" : 5
+            }
+	    ]
           },   
           "iBGP": {
 		"routeurId":"7.1.7.7",
