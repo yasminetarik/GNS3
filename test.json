@@ -222,7 +222,7 @@
   	},
         "eBGP": {
           "neighbor": {
-            "ipAddress": "Router_AS_Y_IP",
+            "ipAddress": "2001:db8:12::2/64",
             "remoteAsn": 200,
 	    "route_map": {
 	    	"community": customer,
@@ -269,7 +269,7 @@
   	},
         "eBGP": {
           "neighbor": {
-            "ipAddress": "Router_AS_Y_IP",
+            "ipAddress": "2001:db8:11::2/64",
             "remoteAsn": 200,
 	    "route_map": {
 	    	"community": customer,
@@ -362,7 +362,7 @@
         	},
           "eBGP": {
             "neighbor": {
-            "ipAddress": "Router_AS_X_IP",
+            "ipAddress": "2001:db8:11::1/64",
             "remoteAsn": 100,
 	    "route_map": {
 	    	"community": provider,
@@ -439,7 +439,7 @@
         	},
           "eBGP": {
             "neighbor": {
-            "ipAddress": "Router_AS_X_IP",
+            "ipAddress": "2001:db8:12::1/64",
             "remoteAsn": 100,
 	    "route_map": {
 	    	"community": provider,
