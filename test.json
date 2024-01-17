@@ -34,6 +34,7 @@
 	"process_name" : "net"
   	},
   	"iBGP": {
+	"routeurId":"1.1.1.2",
     	"peers": ["2001:db8:22::1", "2001:db8:33::1", "2001:db8:44::1", "2001:db8:55::1", "2001:db8:66::1", "2001:db8:77::1"],
     	"description": "iBGP peer with Router B and C"
   	}
@@ -69,6 +70,7 @@
 	"process_name" : "net"
   	},
   	"iBGP": {
+	"routeurId":"2.2.2.1",
     	"peers": ["2001:db8:11::1", "2001:db8:33::1", "2001:db8:44::1", "2001:db8:55::1", "2001:db8:66::1", "2001:db8:77::1"],
     	"description": "iBGP peer with Router A and C and D"
   	}
@@ -103,6 +105,7 @@
 	"process_name" : "net"
   	},
   	"iBGP": {
+	"routeurId":"3.3.3.1",
     	"peers": ["2001:db8:11::1", "2001:db8:22::1","2001:db8:44::1", "2001:db8:55::1", "2001:db8:66::1", "2001:db8:77::1"],
     	"description": "iBGP peer with Router A and B and E"
   	}
@@ -142,6 +145,7 @@
 	"process_name" : "net"
   	},
   	"iBGP": {
+	"routeurId":"4.4.4.1",
     	"peers": ["2001:db8:11::1", "2001:db8:22::1","2001:db8:33::1", "2001:db8:55::1", "2001:db8:66::1", "2001:db8:77::1"],
     	"description": "iBGP peer with Router B and E and F and G"
   	}
@@ -181,6 +185,7 @@
 	"process_name" : "net"
   	},
   	"iBGP": {
+	"routeurId":"5.5.5.1",
     	"peers": ["2001:db8:11::1", "2001:db8:22::1", "2001:db8:33::1", "2001:db8:44::1","2001:db8:66::1", "2001:db8:77::1"],
     	"description": "iBGP peer with Router B and E and F and G"
   	}
@@ -217,6 +222,7 @@
 	"process_name" : "net"
   	},
   	"iBGP": {
+	"routeurId":"6.6.6.1",
     	"peers": ["2001:db8:11::1", "2001:db8:22::1", "2001:db8:33::1", "2001:db8:44::1", "2001:db8:55::1","2001:db8:77::1"],
     	"description": "iBGP peer with Router B and E and F and G"
   	},
@@ -264,6 +270,7 @@
 	"process_name" : "net"
   	},
   	"iBGP": {
+	"routeurId":"7.7.7.1",
     	"peers": ["2001:db8:11::1", "2001:db8:22::1", "2001:db8:33::1", "2001:db8:44::1", "2001:db8:55::1", "2001:db8:66::1"],
     	"description": "iBGP peer with Router B and E and F and G"
   	},
