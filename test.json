@@ -234,7 +234,7 @@
 	    	"community": customer,
 	    	"action": permit,
 	    	"sequence": 10,
-	    	"set_community": 2:100
+	    	"set_community": 1:100
 	    }
           }
 
@@ -282,7 +282,7 @@
 	    	"community": customer,
 	    	"action": permit,
 	    	"sequence": 10,
-	    	"set_community": 2:100
+	    	"set_community": 1:100
 	    }
           }
 	}
@@ -375,7 +375,7 @@
 	    	"community": provider,
 	    	"action": permit,
 	    	"sequence": 20,
-	    	"set_community": 1:100
+	    	"set_community": 2:100
           }
       }
     },
@@ -452,7 +452,7 @@
 	    	"community": provider,
 	    	"action": permit,
 	    	"sequence": 20,
-	    	"set_community": 1:100
+	    	"set_community": 2:100
           }
           }
       }
