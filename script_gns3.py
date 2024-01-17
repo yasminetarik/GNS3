@@ -51,7 +51,7 @@ def generate_config(json_data, output_dir):
                         file.write(f" neighbor {peer} remote-as {asn}\n")
                         
                         file.write(" address-family ipv6 unicast\n")
-                        file.write(" neighbor {peer} activate\n")
+                        file.write(f" neighbor {peer} activate\n")
                         file.write(f"neighbor {peer} send-community both")
                         file.write("exit-address-family\n")
                     file.write("exit\n")
