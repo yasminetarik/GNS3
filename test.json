@@ -231,8 +231,8 @@
             "ipAddress": "2001:db8:12::2/64",
             "remoteAsn": 200,
 	    "route_map": {
-	    	"community": customer,
-	    	"action": permit,
+	    	"community": "customer",
+	    	"action": "permit",
 	    	"sequence": 10,
 	    	"set_community": 1:100
 	    }
@@ -279,8 +279,8 @@
             "ipAddress": "2001:db8:11::2/64",
             "remoteAsn": 200,
 	    "route_map": {
-	    	"community": customer,
-	    	"action": permit,
+	    	"community": "customer",
+	    	"action": "permit",
 	    	"sequence": 10,
 	    	"set_community": 1:100
 	    }
@@ -372,8 +372,8 @@
             "ipAddress": "2001:db8:11::1/64",
             "remoteAsn": 100,
 	    "route_map": {
-	    	"community": provider,
-	    	"action": permit,
+	    	"community": "provider",
+	    	"action": "permit",
 	    	"sequence": 20,
 	    	"set_community": 2:100
           }
@@ -449,8 +449,8 @@
             "ipAddress": "2001:db8:12::1/64",
             "remoteAsn": 100,
 	    "route_map": {
-	    	"community": provider,
-	    	"action": permit,
+	    	"community": "provider",
+	    	"action": "permit",
 	    	"sequence": 20,
 	    	"set_community": 2:100
           }
