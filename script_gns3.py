@@ -112,17 +112,7 @@ def generate_config(json_data, output_dir):
                 file.write("\n")
 
 
-                for neighbor in conf_ebgp["neighbors"]:
-                    route = neighbor["route_map"]
-                    relationship = route['community']
-                    if relationship == 'customer':
-                        local_pref = 150
-                    elif relationship == 'peer':
-                        local_pref = 100
-                    elif relationship == 'provider':
-                        local_pref = 50
-                    else:
-                        local_pref = 100 
+       
 
 
 # Example usage
