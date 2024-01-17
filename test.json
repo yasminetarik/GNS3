@@ -1,4 +1,4 @@
-{
+  {
   "AS_X": {
     "autonomousSystem": 10,
     "routingProtocols": {
@@ -223,7 +223,13 @@
         "eBGP": {
           "neighbor": {
             "ipAddress": "Router_AS_Y_IP",
-            "remoteAsn": 200
+            "remoteAsn": 200,
+	    "route_map": {
+	    	"community": customer,
+	    	"action": permit,
+	    	"sequence": 10,
+	    	"set_community": 2:100
+	    }
           }
 
       },
@@ -264,7 +270,13 @@
         "eBGP": {
           "neighbor": {
             "ipAddress": "Router_AS_Y_IP",
-            "remoteAsn": 200
+            "remoteAsn": 200,
+	    "route_map": {
+	    	"community": customer,
+	    	"action": permit,
+	    	"sequence": 10,
+	    	"set_community": 2:100
+	    }
           }
 	}
 
@@ -326,7 +338,12 @@
           "eBGP": {
             "neighbor": {
             "ipAddress": "Router_AS_X_IP",
-            "remoteAsn": 200
+            "remoteAsn": 100,
+	    "route_map": {
+	    	"community": provider,
+	    	"action": permit,
+	    	"sequence": 20,
+	    	"set_community": 1:100
           }
       }
     },
@@ -371,7 +388,13 @@
           "eBGP": {
             "neighbor": {
             "ipAddress": "Router_AS_X_IP",
-            "remoteAsn": 200
+            "remoteAsn": 100,
+	    "route_map": {
+	    	"community": provider,
+	    	"action": permit,
+	    	"sequence": 20,
+	    	"set_community": 1:100
+          }
           }
       }
     },
