@@ -40,6 +40,7 @@ def generate_config(json_data, output_dir):
                         file.write(f"interface {interface['interfaceName']}\n")
                         area_id = ospf_config['area']
                         file.write(f" ipv6 ospf 1 area {area_id}\n")
+                        file.write(f"ipv6 ospf cost {interface['ospfCost']}\n")
                     file.write("exit\n")
 
                 if 'iBGP' in config:
