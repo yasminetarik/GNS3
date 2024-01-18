@@ -230,12 +230,20 @@
           "neighbor": {
             "ipAddress": "2001:db8:12::2/64",
             "remoteAsn": 200,
-	    "route_map": {
+	    "relationship": "customer"
+	    "route_map_in": {
 	    	"community": "customer",
 	    	"action": "permit",
 	    	"sequence": 10,
-	    	"set_community": 1:100
+	    	"set_community": "1:100"
 	    }
+	    "route_map_out": {
+		    "community": "customer",
+		    "remoteAsn": "permit",
+		    "sequence":10,
+		    "set_community": "1:100"
+	    }
+		    
           }
 
       },
@@ -278,11 +286,18 @@
           "neighbor": {
             "ipAddress": "2001:db8:11::2/64",
             "remoteAsn": 200,
-	    "route_map": {
+	    "relationship":"customer",
+	    "route_map_in": {
 	    	"community": "customer",
 	    	"action": "permit",
 	    	"sequence": 10,
 	    	"set_community": 1:100
+	    }
+	    "route_map_out": {
+		    "community": "customer",
+		    "remoteAsn": "permit",
+		    "sequence":10,
+		    "set_community": "1:100"
 	    }
           }
 	}
@@ -371,12 +386,20 @@
             "neighbor": {
             "ipAddress": "2001:db8:11::1/64",
             "remoteAsn": 100,
-	    "route_map": {
+	    "relationship": "provider"
+	    "route_map_in": {
 	    	"community": "provider",
 	    	"action": "permit",
 	    	"sequence": 20,
 	    	"set_community": 2:100
           }
+	    "route_map_out": {
+		    "community": "customer",
+		    "action": "permit"
+		    "remoteAsn": "",
+		    "sequence":10,
+		    "set_community": "2:100"
+	    }
       }
     },
       "RouterI": {
@@ -448,12 +471,17 @@
             "neighbor": {
             "ipAddress": "2001:db8:12::1/64",
             "remoteAsn": 100,
-	    "route_map": {
+	    "relationship": "provider",
+	    "route_map_in": {
 	    	"community": "provider",
 	    	"action": "permit",
 	    	"sequence": 20,
 	    	"set_community": 2:100
           }
+	    "route_map_out": {
+		"community": "customer",
+		"action": "permit",
+		"sequence":
           }
       }
     },
