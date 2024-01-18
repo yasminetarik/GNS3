@@ -79,11 +79,12 @@ def generate_config(json_data, output_dir):
                     file.write(f"router bgp {asn_d}\n")
 
                     for neighbor in conf_ebgp["neighbors"]:
-                        route = neighbor["route_map"]
                         asn_a = neighbor["remoteAsn"]
                         neighbor_ip = neighbor["ipAddress"]
-                        set_community = route["set_community"] 
-                        relationship= neighbor.get("community", "peer")
+                        set_community = neighbor["route_map_in"]["set_community"]
+                        relationship = neighbor.get("relationship", "peer")
+                        route_map_in = neighbor["route_map_in"]
+                        route_map_out = neighbor["route_map_out"]
 
                         if relationship == 'customer':
                             local_pref = 300
@@ -93,23 +94,30 @@ def generate_config(json_data, output_dir):
                             local_pref = 50
                         else:
                             local_pref = 100
-                        
+
                         file.write(f" neighbor {neighbor_ip} remote-as {asn_a}\n")
 
-                        file.write(f"route-map {route['community']} {route['action']} {route['sequence']}\n")
-                        
+        # Configure route-map for incoming routes (from neighbor)
+                        file.write(f"route-map {route_map_in['community']} {route_map_in['action']} {route_map_in['sequence']}\n")
                         file.write(f" set community {set_community}\n")
-                        file.write(f"set local-preference {local_pref}\n")
+                        file.write(f" set local-preference {local_pref}\n")
+                        file.write("exit\n")
+
+        # Configure route-map for outgoing routes (to neighbor)
+                        file.write(f"route-map {route_map_out['community']} {route_map_out['action']} {route_map_out['sequence']}\n")
+                        file.write(f" set community {set_community}\n")
                         file.write("exit\n")
 
                     file.write(" address-family ipv6 unicast\n")
                     for neighbor in conf_ebgp["neighbors"]:
-                        route = neighbor["route_map"]
-                        file.write(f" neighbor {neighbor['ipAddress']} route-map {route['community']} in\n")
-                        
+                        route_map_in = neighbor["route_map_in"]
+                        file.write(f" neighbor {neighbor['ipAddress']} route-map {route_map_in['community']} in\n")
+
                     file.write("exit-address-family\n")
                     file.write("exit\n")
+
                 file.write("\n")
+
 
 
        
