@@ -1,4 +1,4 @@
-  { // on aura deux routes map, une in une out
+  { 
   "AS_X": {
     "autonomousSystem": 10,
     "routingProtocols": {
@@ -262,7 +262,7 @@
 	    }
 	    "route_map_out": {
 		    "community": "customer",
-		    "remoteAsn": "permit",
+		    "action": "permit",
 		    "sequence":10,
 		    "set_community": "1:100"
 	    }
@@ -318,7 +318,7 @@
 	    }
 	    "route_map_out": {
 		    "community": "customer",
-		    "remoteAsn": "permit",
+		    "action": "permit",
 		    "sequence":10,
 		    "set_community": "1:100"
 	    }
@@ -412,10 +412,9 @@
           }
 	    "route_map_out": {
 		    "community": "customer",
-		    "action": "permit"
-		    "remoteAsn": "",
-		    "sequence":10,
-		    "set_community": "2:100"
+		    "action": "permit",
+		    "sequence":10
+		    
 	    }
       }
     },
