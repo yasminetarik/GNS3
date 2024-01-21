@@ -1,6 +1,6 @@
   { 
   "AS_X": {
-    "autonomousSystem": 10,
+    "autonomousSystem": 100,
     "routingProtocols": {
       "RIP": {
         "version": 2,
@@ -258,13 +258,13 @@
 	    	"community": "customer",
 	    	"action": "permit",
 	    	"sequence": 10,
-	    	"set_community": "1:100"
+	    	"set_community": "100:1"
 	    }
 	    "route_map_out": {
 		    "community": "customer",
 		    "action": "permit",
-		    "sequence":10,
-		    "set_community": "1:100"
+		    "sequence":20,
+		    "set_community": "200:1"
 	    }
 		    
           }
@@ -314,13 +314,13 @@
 	    	"community": "customer",
 	    	"action": "permit",
 	    	"sequence": 10,
-	    	"set_community": 1:100
+	    	"set_community": "100:1"
 	    }
 	    "route_map_out": {
 		    "community": "customer",
 		    "action": "permit",
-		    "sequence":10,
-		    "set_community": "1:100"
+		    "sequence":20,
+		    "set_community": "200:1"
 	    }
           }
 	}
@@ -331,7 +331,7 @@
   },
 	
   "AS_Y": {
-    "autonomousSystem": 11,
+    "autonomousSystem": 200,
     "routingProtocols": {
       "OSPF": {
         "processId":1,
@@ -407,13 +407,14 @@
 	    "route_map_in": {
 	    	"community": "provider",
 	    	"action": "permit",
-	    	"sequence": 20,
-	    	"set_community": 2:100
+	    	"sequence": 10,
+	    	"set_community": "200:1"
           }
 	    "route_map_out": {
 		    "community": "customer",
 		    "action": "permit",
-		    "sequence":10
+		    "sequence":20,
+		    "set_community": "100:1"
 		    
 	    }
       }
@@ -485,13 +486,14 @@
 	    "route_map_in": {
 	    	"community": "provider",
 	    	"action": "permit",
-	    	"sequence": 20,
-	    	"set_community": 2:100
+	    	"sequence": 10,
+	    	"set_community": "100:1"
           }
 	    "route_map_out": {
 		"community": "customer",
 		"action": "permit",
-		"sequence":
+		"sequence":20,
+		"set_community": "200:1"
           }
       }
     },
