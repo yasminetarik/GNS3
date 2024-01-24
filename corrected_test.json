@@ -343,7 +343,8 @@
                             "set_community": "200:1"
                         }
                     }
-                },
+                }
+            },
             "RouterG": {
                 "interfaces": [
                     {
@@ -408,7 +409,6 @@
                 }
             }
         }
-    }
 },
     "AS_Y": {
         "autonomousSystem": 200,
@@ -514,7 +514,7 @@
                             "community": "provider",
                             "action": "permit",
                             "sequence": 10,
-                            "set_community": "200:1"
+                            "set_community": "200:2"
                         },
                         "route_map_out": {
                             "community": "customer",
@@ -523,8 +523,8 @@
                             "set_community": "100:1"
                         }
                     }
-                },
-
+                }
+            },
             "RouterI": {
                     "interfaces": [
                         {
@@ -598,16 +598,17 @@
                                 "community": "provider",
                                 "action": "permit",
                                 "sequence": 10,
-                                "set_community": "200:1"
+                                "set_community": "200:2"
                             },
-                            "route_map_out": {
+                            "route_map_out": { 
                                 "community": "customer",
                                 "action": "permit",
                                 "sequence": 20,
                                 "set_community": "100:1"
                             }
                         }
-                    },
+                    }
+                },
                     "RouterJ": {
                         "interfaces": [
                             {
@@ -944,8 +945,6 @@
                         }
                     }
                 }
-            }
-        }
     },
     "AS_W": {
         "autonomousSystem": 300,
