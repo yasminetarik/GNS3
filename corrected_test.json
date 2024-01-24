@@ -121,19 +121,19 @@
                 "eBGP": {
                     "neighbor": {
                         "ipAddress": "2001:db8:34::2/64",
-                        "remoteAsn": 200,
+                        "remoteAsn": 300,
                         "relationship": "customer",
                         "route_map_in": {
                             "community": "customer",
                             "action": "permit",
                             "sequence": 10,
-                            "set_community": "1:100"
+                            "set_community": "100:1"
                         },
                         "route_map_out": {
                             "community": "customer",
                             "remoteAsn": "permit",
                             "sequence": 10,
-                            "set_community": "1:100"
+                            "set_community": "300:1"
                         }
                     }
                 }
@@ -598,13 +598,13 @@
                                 "community": "provider",
                                 "action": "permit",
                                 "sequence": 10,
-                                "set_community": "100:1"
+                                "set_community": "200:1"
                             },
                             "route_map_out": {
                                 "community": "customer",
                                 "action": "permit",
                                 "sequence": 20,
-                                "set_community": "200:1"
+                                "set_community": "100:1"
                             }
                         }
                     },
@@ -817,19 +817,19 @@
                         "eBGP": {
                             "neighbor": {
                                 "ipAddress": "2001:db8:43::2/64",
-                                "remoteAsn": 200,
+                                "remoteAsn": 400,
                                 "relationship": "customer",
                                 "route_map_in": {
                                     "community": "customer",
                                     "action": "permit",
                                     "sequence": 10,
-                                    "set_community": "1:100"
+                                    "set_community": "200:1"
                                 },
                                 "route_map_out": {
                                     "community": "customer",
                                     "remoteAsn": "permit",
                                     "sequence": 10,
-                                    "set_community": "1:100"
+                                    "set_community": "400:1"
                                 }
                             }
                         }
@@ -948,7 +948,7 @@
         }
     },
     "AS_W": {
-        "autonomousSystem": 12,
+        "autonomousSystem": 300,
         "routingProtocols": {
             "RIP": {
                 "version": 2,
@@ -1043,19 +1043,19 @@
                 "eBGP": {
                     "neighbor": {
                         "ipAddress": "2001:db8:34::2/64",
-                        "remoteAsn": 200,
+                        "remoteAsn": 100,
                         "relationship": "customer",
                         "route_map_in": {
                             "community": "customer",
                             "action": "permit",
                             "sequence": 10,
-                            "set_community": "1:100"
+                            "set_community": "300:1"
                         },
                         "route_map_out": {
                             "community": "customer",
                             "remoteAsn": "permit",
                             "sequence": 10,
-                            "set_community": "1:100"
+                            "set_community": "100:1"
                         }
                     }
                 }
@@ -1097,7 +1097,7 @@
         }
     },
     "AS_Z": {
-        "autonomousSystem": 13,
+        "autonomousSystem": 400,
         "routingProtocols": {
             "RIP": {
                 "version": 2,
@@ -1198,13 +1198,13 @@
                             "community": "customer",
                             "action": "permit",
                             "sequence": 10,
-                            "set_community": "1:100"
+                            "set_community": "400:1"
                         },
                         "route_map_out": {
                             "community": "customer",
                             "remoteAsn": "permit",
                             "sequence": 10,
-                            "set_community": "1:100"
+                            "set_community": "200:1"
                         }
                     }
                 }
