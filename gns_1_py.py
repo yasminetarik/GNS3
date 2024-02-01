@@ -68,21 +68,22 @@ def generate_config(json_data, output_dir):
 
                     if 'eBGP' in config:
                         asn_d = json_data[AS]['autonomousSystem']
-                        conf_ebgp = config['eBGP']
-
+                        conf_ebgp = dict(config['eBGP'])
+                        
                         #file.write(f"router bgp {asn_d}\n")
 
-                        for neighbor in conf_ebgp["neighbor"]:
-                            
-                            asn_a = neighbor[1]
-                            neighbor_ip = neighbor[0]
+                        for neighbor, dico in conf_ebgp.items():
+                            #print(neighbor)
+                            asn_a = dico['remoteAsn']
+                            neighbor_ip = dico['ipAddress']
                             file.write(f" neighbor {neighbor_ip} remote-as {asn_a}\n")
                         file.write(" no auto-summary \n")
                         file.write("!\n")
 
                         file.write(" address-family ipv6 unicast\n")
-                        for peer in config['eBGP']['neighbor']:
-                            file.write(f" neighbor {peer[0]} activate\n")
+                        for neighbor, dico in conf_ebgp.items():
+                            neighbor_ip = dico['ipAddress']
+                            file.write(f" neighbor {neighbor_ip} activate\n")
                         file.write(" exit-address-family \n")
 
 
