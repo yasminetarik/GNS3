@@ -75,15 +75,16 @@ def generate_config(json_data, output_dir):
                         for neighbor, dico in conf_ebgp.items():
                             #print(neighbor)
                             asn_a = dico['remoteAsn']
-                            neighbor_ip = dico['ipAddress']
-                            file.write(f" neighbor {neighbor_ip} remote-as {asn_a}\n")
+                             
+                            for neighbor_ip in dico['ipAddress']:
+                                file.write(f" neighbor {neighbor_ip} remote-as {asn_a}\n")
                         file.write(" no auto-summary \n")
                         file.write("!\n")
 
                         file.write(" address-family ipv6 unicast\n")
                         for neighbor, dico in conf_ebgp.items():
-                            neighbor_ip = dico['ipAddress']
-                            file.write(f" neighbor {neighbor_ip} activate\n")
+                            for neighbor_ip in dico['ipAddress']:
+                                file.write(f" neighbor {neighbor_ip} activate\n")
                         file.write(" exit-address-family \n")
 
 
@@ -134,7 +135,7 @@ def fin_cfg(file):
     file.write("!\n"*4)
     file.write("gatekeeper\n shutdown\n")
     file.write("!\n"*2)
-    file.write("line con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n login")
+    file.write("line con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n login\n")
     file.write("!\n"*2)
     file.write("end")
 # Example usage
