@@ -13,30 +13,33 @@ def generate_config(json_data, output_dir):
         for router, config in json_data[AS]['routers'].items():
             
             with open(f"{output_dir}/{router}_config.cfg", 'w') as file:
-                file.write(f"! Configuration for {router}\n")
-                file.write(f"hostname {router}\n\n")
-                file.write("ipv6 unicast-routing \n")
+
+                debut_cfg(file,router)
 
                 for interface in config['interfaces']:
-                    
+                    file.write("!\n")
                     file.write(f"interface {interface['interfaceName']}\n")
+                    start_interface(file, interface)
                     file.write(f" ipv6 address {interface['ipAddress']}\n")
-                    file.write(" no shutdown\n\n")
+                    file.write(" no shutdown\n")
                     if 'RIP' in config:
                         file.write (f" ipv6 rip {config['RIP']['process_name']} enable \n")
-
-                if 'RIP' in config:
-    
-                    file.write(f"ipv6 router rip {config['RIP']['process_name']} \n")
-                    file.write(" redistribute connected\n")
-                    file.write("\n")
-                    #file.write("exit")
                     if 'OSPF' in config:
                         ospf_config = config['OSPF']
-                        
+        
                         area_id = ospf_config['area']
+                        file.write("!\n"*3)
                         file.write(f" ipv6 ospf 1 area {area_id}\n")
-                        file.write("\n")
+                        #file.write(f" ipv6 ospf cost {interface['ospfCost']} \n")
+                        file.write("!\n")
+
+                if 'RIP' in config:
+                    file.write("!\n"*3)
+                    file.write(f"ipv6 router rip {config['RIP']['process_name']} \n")
+                    file.write(" redistribute connected\n")
+                    file.write("!\n")
+                    #file.write("exit")
+                
                     
                         #file.write(f" ipv6 ospf cost {interface['ospfCost']} \n")
                     
@@ -74,13 +77,18 @@ def generate_config(json_data, output_dir):
                             asn_a = neighbor[1]
                             neighbor_ip = neighbor[0]
                             file.write(f" neighbor {neighbor_ip} remote-as {asn_a}\n")
-                    file.write(" no auto-summary \n")
+                        file.write(" no auto-summary \n")
+                        file.write("!\n")
+
+                        file.write(" address-family ipv6 unicast\n")
+                        for peer in config['eBGP']['neighbor']:
+                            file.write(f" neighbor {peer[0]} activate\n")
+                        file.write(" exit-address-family \n")
 
 
-                    
-                    file.write(" address-family ipv6 unicast\n")
-                    for peer in config['iBGP']['peers']:
-                        file.write(f" neighbor {peer} activate\n")
+                    file.write("!\n")
+                        
+                    file.write("!\n"*2)
                         #file.write(f"neighbor {peer} send-community both")
                         #file.write("exit-address-family\n")
                     #file.write("no auto-summary")
@@ -102,11 +110,32 @@ def generate_config(json_data, output_dir):
 
 
                     file.write("\n")
+                fin_cfg(file)
 
 
+def debut_cfg(file, router):
+    file.write("! \nversion 12.4 \nservice timestamps debug datetime msec \nservice timestamps log datetime msec \nno service password-encryption")
+    file.write("! \n")
+    file.write(f"hostname {router}\n!\n!")
+    file.write("boot-start-marker \nboot-end-marker \n! \n! \nno aaa new-model \nno ip icmp rate-limit unreachable\n! \n! \nip cef\nno ip domain lookup\n!\n!")
+    file.write("!\n"*4)
+    file.write("ipv6 unicast-routing \n")  
+    file.write("!\n"*4)
+    file.write("ip tcp synwait-time 5\n")
+    file.write("!\n")
 
-       
+def start_interface(file, interface):
+    file.write(" no ip address\n duplex auto\n speed auto\n")
 
+def fin_cfg(file):
+    file.write("!\n"*4)
+    file.write("control-plane\n")
+    file.write("!\n"*4)
+    file.write("gatekeeper\n shutdown\n")
+    file.write("!\n"*2)
+    file.write("line con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n login")
+    file.write("!\n"*2)
+    file.write("end")
 # Example usage
 json_file = "corrected_test_1.json"
 output_directory = "/mnt/c/Users/HP/Desktop/Cours/3_TC/GNS"
